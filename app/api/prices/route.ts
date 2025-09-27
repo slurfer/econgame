@@ -63,11 +63,5 @@ export async function GET() {
     await setPricesGuard();
   }
 
-  if (prices) {
-    console.log(new Date(refreshInterval - (Date.now() - prices.timestamp)));
-    console.log(new Date(prices.timestamp));
-    console.log(new Date(Date.now() - (Date.now() % refreshInterval)));
-  }
-
   return NextResponse.json({ status: "ok", data: prices });
 }
