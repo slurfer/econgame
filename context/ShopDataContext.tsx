@@ -1,6 +1,8 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { ApiPrices } from "@/types/api/response/prices";
+import { getMsUntilNextRefresh } from "@/util/timeTools";
+import { refreshInterval } from "@/config/config.json";
 
 interface ShopDataContextType {
   items: ApiPrices["items"];
@@ -24,6 +26,10 @@ export const ShopDataProvider = ({
     const res = await fetch("/api/prices");
     if (!res.ok) return;
     const data: ApiPrices = (await res.json()).data;
+    if (data.timestamp + refreshInterval < Date.now()) {
+      loadData();
+      return;
+    }
     setItems(data.items);
     setShops(data.shops);
   }
@@ -31,20 +37,11 @@ export const ShopDataProvider = ({
   useEffect(() => {
     loadData();
 
-    function msUntilNextInterval() {
-      const now = new Date();
-      const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
-      const ms = now.getMilliseconds();
-      const next = 5 - (minutes % 5);
-      return next * 60_000 - seconds * 1000 - ms;
-    }
-
     const firstTimeout = setTimeout(() => {
       loadData();
-      const interval = setInterval(loadData, 5 * 60_000);
+      const interval = setInterval(loadData, refreshInterval);
       (window as any).pricesInterval = interval;
-    }, msUntilNextInterval());
+    }, getMsUntilNextRefresh());
 
     return () => {
       clearTimeout(firstTimeout);

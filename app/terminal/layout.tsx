@@ -1,11 +1,15 @@
 "use client";
 import { CardProvider } from "@/context/CardModalContext";
-import PhoneLayout from "../components/PhoneLayout";
+import { ShopDataProvider } from "@/context/ShopDataContext";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <CardProvider>{children}</CardProvider>;
+  return (
+    <ShopDataProvider>
+      <CardProvider>{children}</CardProvider>
+    </ShopDataProvider>
+  );
 }

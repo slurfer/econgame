@@ -7,4 +7,5 @@ export interface ApiPrices {
     normalPrice: number;
   }[];
   shops: string[];
+  timestamp: number;
 }

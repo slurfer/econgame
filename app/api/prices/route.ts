@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import config from "@/config/shops.json";
 import { ItemType, ShopType } from "@/types/ItemType";
-import { ApiPrices } from "@/types/api/prices";
+import { ApiPrices } from "@/types/api/response/prices";
+import { clear } from "console";
+import { refreshInterval } from "@/config/config.json";
 
 function getRandomItem<T>(list: T[]): T {
   const randomIndex = Math.floor(Math.random() * list.length);
@@ -19,19 +21,53 @@ function getPricesForItem(
   return prices;
 }
 
-export async function GET() {
+let prices: ApiPrices | null = null;
+let pricesLock = false;
+
+function setPrices() {
+  console.log("Setting new prices...");
   const items: ItemType[] = config.items;
   const shops: ShopType[] = config.shops;
   const shopNames = shops.map((shop) => shop.name);
 
-  const response: ApiPrices = {
+  prices = {
     items: items.map((item) => ({
       name: item.name,
       prices: getPricesForItem(item, shopNames),
       normalPrice: Math.max(...item.prices),
     })),
     shops: shopNames,
+    timestamp: Date.now() - (Date.now() % refreshInterval),
   };
+}
 
-  return NextResponse.json(response);
+async function setPricesGuard() {
+  if (!pricesLock) {
+    pricesLock = true;
+    setPrices();
+    pricesLock = false;
+  } else {
+    await new Promise((resolve) => {
+      const intervalId = setInterval(() => {
+        if (!pricesLock) {
+          clearInterval(intervalId);
+          resolve(true);
+        }
+      }, 100);
+    });
+  }
+}
+
+export async function GET() {
+  if (!prices || Date.now() - prices.timestamp > refreshInterval) {
+    await setPricesGuard();
+  }
+
+  if (prices) {
+    console.log(new Date(refreshInterval - (Date.now() - prices.timestamp)));
+    console.log(new Date(prices.timestamp));
+    console.log(new Date(Date.now() - (Date.now() % refreshInterval)));
+  }
+
+  return NextResponse.json({ status: "ok", data: prices });
 }

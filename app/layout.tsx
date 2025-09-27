@@ -1,8 +1,4 @@
-"use client";
 import "./globals.css";
-import PhoneLayout from "@/app/components/PhoneLayout";
-import BackButton from "./components/Buttons/BackButton";
-import { ShopDataProvider } from "@/context/ShopDataContext";
 
 export default function RootLayout({
   children,
@@ -12,9 +8,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="bg-white">
-          <ShopDataProvider>{children}</ShopDataProvider>
-        </div>
+        <div className="bg-white">{children}</div>
       </body>
     </html>
   );

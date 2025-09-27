@@ -1,27 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
-
-function getMsUntilNext5Min() {
-  const now = new Date();
-  const minutes = now.getMinutes();
-  const seconds = now.getSeconds();
-  const ms = now.getMilliseconds();
-
-  const next = 5 - (minutes % 5); // minutes until next 5-min mark
-  return next * 60_000 - seconds * 1000 - ms;
-}
+import { refreshInterval } from "@/config/config.json";
+import { getMsUntilNextRefresh } from "@/util/timeTools";
 
 export default function RefreshCounter() {
   const [mounted, setMounted] = useState(false); // track client mount
-  const total = 5 * 60_000; // 5 minutes in ms
   const [timeLeft, setTimeLeft] = useState(0);
 
   useEffect(() => {
     setMounted(true); // now we are on the client
-    setTimeLeft(getMsUntilNext5Min());
+    setTimeLeft(getMsUntilNextRefresh());
 
     const interval = setInterval(() => {
-      setTimeLeft(getMsUntilNext5Min());
+      setTimeLeft(getMsUntilNextRefresh());
     }, 1000);
 
     return () => clearInterval(interval);
@@ -34,7 +25,7 @@ export default function RefreshCounter() {
 
   const radius = 40;
   const circumference = 2 * Math.PI * radius;
-  const progress = 1 - timeLeft / total;
+  const progress = 1 - timeLeft / refreshInterval;
   const strokeDashoffset = circumference * (1 - progress);
 
   return (
