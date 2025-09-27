@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { ApiPrices } from "@/types/api/prices";
+import { ApiPrices } from "@/types/api/response/prices";
 
 interface ShopDataContextType {
   items: ApiPrices["items"];
@@ -23,7 +23,7 @@ export const ShopDataProvider = ({
   async function loadData() {
     const res = await fetch("/api/prices");
     if (!res.ok) return;
-    const data: ApiPrices = await res.json();
+    const data: ApiPrices = (await res.json()).data;
     setItems(data.items);
     setShops(data.shops);
   }

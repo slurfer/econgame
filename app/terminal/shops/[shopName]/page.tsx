@@ -34,7 +34,7 @@ export default function ShopPage() {
     setBuyItem(null);
 
     async function handlePayment() {
-      const res = await fetch("/api/payment", {
+      const res = await fetch("/api/transaction", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, price: Number(price), card: cardData }),

@@ -1,10 +1,10 @@
+import { ApiTransactionRequest } from "@/types/api/transaction";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const body = await request.json();
+  const body: ApiTransactionRequest = await request.json();
   console.log("Payment received:", body);
   return NextResponse.json({
-    received: body,
     status: "ok",
   });
 }
