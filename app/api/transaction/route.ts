@@ -31,15 +31,13 @@ export async function POST(request: Request) {
       // Handle known Prisma errors
       if (error.code === "P2003") {
         // Record not found
-        return NextResponse.json(
-          { error: "Card not found" },
-          { status: 404 }
-        );
+        return NextResponse.json({ error: "Card not found" }, { status: 404 });
       }
-    console.error("Error processing payment:", error);
-    return NextResponse.json(
-      { error: "Error processing payment" },
-      { status: 500 }
-    );
+      console.error("Error processing payment:", error);
+      return NextResponse.json(
+        { error: "Error processing payment" },
+        { status: 500 }
+      );
+    }
   }
 }
