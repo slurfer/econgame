@@ -6,7 +6,6 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../app/generated/prisma"
 }
 
 datasource db {
@@ -28,4 +27,10 @@ model Card {
   owner        String
   balance      Int           @default(0)
   transactions Transaction[]
+}
+
+model ShoppingList {
+  id    String      @id @default(uuid()) @db.Char(36)
+  name  String
+  price Int
 }
