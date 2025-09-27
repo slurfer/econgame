@@ -6,10 +6,13 @@ import PhoneLayout from "../components/PhoneLayout";
 import LinkButton from "@/app/components/Buttons/LinkButton";
 import config from "@/config/shops.json"; // static import
 import { ShopType } from "@/types/ItemType";
+import Button from "../components/Buttons/Button";
+import resetGame from "@/util/resetGame";
 
 export default function Home() {
   // Extract shops from JSON
   const shops: ShopType[] = config.shops;
+  const { setModalState } = useCard();
 
   return (
     <PhoneLayout>
@@ -27,8 +30,6 @@ export default function Home() {
           {shop.name}
         </LinkButton>
       ))}
-
-      <div className="my-4"></div>
 
       {/* Other terminal actions */}
       <LinkButton bgColor="gray" link="/terminal/initCard">
