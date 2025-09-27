@@ -24,20 +24,22 @@ export async function POST(request: Request) {
       cardId: transaction.cardId,
     };
 
-    console.log("Payment received:", body);
+    console.log(
+      `Processed transaction: ${transaction.name} for ${transaction.price} Czk`
+    );
     return NextResponse.json(response);
   } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      // Handle known Prisma errors
-      if (error.code === "P2003") {
-        // Record not found
-        return NextResponse.json({ error: "Card not found" }, { status: 404 });
-      }
-      console.error("Error processing payment:", error);
-      return NextResponse.json(
-        { error: "Error processing payment" },
-        { status: 500 }
-      );
+    if (
+      error instanceof Prisma.PrismaClientKnownRequestError &&
+      error.code === "P2003"
+    ) {
+      // Record not found
+      return NextResponse.json({ error: "Card not found" }, { status: 404 });
     }
+    console.error("Error processing payment:", error);
+    return NextResponse.json(
+      { error: "Error processing payment" },
+      { status: 500 }
+    );
   }
 }
