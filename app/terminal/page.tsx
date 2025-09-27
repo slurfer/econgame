@@ -4,7 +4,7 @@ import { useCard } from "@/context/CardModalContext";
 import Header from "../components/Header";
 import PhoneLayout from "../components/PhoneLayout";
 import LinkButton from "@/app/components/Buttons/LinkButton";
-import config from "@/config/shops.json"; // static import
+import config from "@/config/game.json"; // static import
 import { ShopType } from "@/types/ItemType";
 import Button from "../components/Buttons/Button";
 import resetGame from "@/util/resetGame";

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import config from "@/config/shops.json";
+import config from "@/config/game.json";
 import { ItemType, ShopType } from "@/types/ItemType";
 import { ApiPrices } from "@/types/api/response/prices";
 import { clear } from "console";
