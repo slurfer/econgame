@@ -5,12 +5,14 @@ import Button from "@/app/components/Buttons/Button";
 import { useCard } from "@/context/CardModalContext";
 import Header from "@/app/components/Header";
 import { ApiPostCardResponse } from "@/types/api/card";
+import PhoneLayout from "@/app/components/PhoneLayout";
 
 export default function Read() {
   const { cardData, setCardData, setModalState } = useCard();
   const [inputText, setInputText] = useState("");
 
   const handleSubmit = async () => {
+    setModalState("loading");
     const res = await fetch("/api/card", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -25,30 +27,29 @@ export default function Read() {
       setModalState("error");
       return;
     }
-    alert(data.data.id);
 
     setCardData(data.data.id);
     setModalState("writing");
   };
 
   return (
-    <div className="text-center">
-      <Header blueText="Write" backButtonLink="/terminal" />
+    <PhoneLayout>
+      <div className="text-center">
+        <Header blueText="Init card" backButtonLink="/terminal" />
 
-      <div className="my-5">
-        <textarea
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder="Enter your text here..."
-          className="w-full p-2 border rounded-md"
-        />
+        <div className="my-5 text-black">
+          <textarea
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            placeholder="Enter your text here..."
+            className="w-full p-2 border rounded-md"
+          />
+        </div>
+
+        <Button bgColor="gray" onClick={handleSubmit}>
+          Submit & Write
+        </Button>
       </div>
-
-      <pre>{JSON.stringify(cardData, null, 2)}</pre>
-
-      <Button bgColor="gray" onClick={handleSubmit}>
-        Submit & Write
-      </Button>
-    </div>
+    </PhoneLayout>
   );
 }

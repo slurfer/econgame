@@ -24,7 +24,7 @@ model Transaction {
 
 model Card {
   id           String        @id @default(uuid()) @db.Char(36)
-  owner        String
+  owner        String        @unique
   balance      Int           @default(0)
   transactions Transaction[]
 }
