@@ -31,6 +31,9 @@ export default function Home() {
       <div className="my-4"></div>
 
       {/* Other terminal actions */}
+      <LinkButton bgColor="gray" link="/terminal/initCard">
+        Init card
+      </LinkButton>
       <LinkButton bgColor="gray" link="/terminal/read">
         Read
       </LinkButton>
