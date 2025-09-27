@@ -15,7 +15,7 @@ datasource db {
 
 model Transaction {
   id    String  @id @default(uuid()) @db.Char(36)
-  name  String
+  owner  String
   price Int
   card  Card    @relation(fields: [cardId], references: [id])
   cardId String @db.Char(36)

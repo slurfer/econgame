@@ -12,20 +12,20 @@ export async function POST(request: Request) {
   try {
     const transaction = await prisma.transaction.create({
       data: {
-        name: body.name,
+        owner: body.owner,
         price: body.price,
         cardId: body.cardId,
       },
     });
 
     const response: ApiPostTransactionResponse = {
-      name: transaction.name,
+      owner: transaction.owner,
       price: transaction.price,
       cardId: transaction.cardId,
     };
 
     console.log(
-      `Processed transaction: ${transaction.name} for ${transaction.price} Czk`
+      `Processed transaction: ${transaction.owner} for ${transaction.price} Czk`
     );
     return NextResponse.json(response);
   } catch (error) {

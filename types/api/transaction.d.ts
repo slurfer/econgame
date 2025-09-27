@@ -1,11 +1,11 @@
 export interface ApiPostTransactionRequest {
-  name: string;
+  owner: string;
   price: number;
   cardId: string;
 }
 
 export interface ApiPostTransactionResponse {
-  name: string;
+  owner: string;
   price: number;
   cardId: string;
 }

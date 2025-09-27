@@ -37,7 +37,11 @@ export default function ShopPage() {
       const res = await fetch("/api/transaction", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, price: Number(price), cardId: cardData }),
+        body: JSON.stringify({
+          owner: name,
+          price: Number(price),
+          cardId: cardData,
+        }),
       });
       paymentInProgress.current = false;
       setModalState(res.ok ? "closed" : "error");
