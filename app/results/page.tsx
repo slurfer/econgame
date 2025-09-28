@@ -68,6 +68,7 @@ export default function CompetitionPage() {
           <tbody>
             {cards.map((card, index) => (
               <tr
+                key={card.id}
                 className="border-t border-gray-300 hover:bg-gray-100"
                 onClick={() => router.push(`/terminal/cardInfo/${card.id}`)}
               >
