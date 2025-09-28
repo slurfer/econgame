@@ -19,6 +19,14 @@ export async function POST(request: Request) {
       },
     });
 
+    const transaction = await prisma.transaction.create({
+      data: {
+        owner: body.name,
+        price: body.price,
+        cardId: body.cardId,
+      },
+    });
+
     const response: ApiPostOpenShoppingListResponse = {
       name: shoppingList.name,
       price: shoppingList.price,

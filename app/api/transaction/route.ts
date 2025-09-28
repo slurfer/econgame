@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     const transaction = await prisma.transaction.create({
       data: {
         owner: body.owner,
-        price: body.price,
+        price: -body.price,
         cardId: body.cardId,
       },
     });
