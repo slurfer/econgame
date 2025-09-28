@@ -17,7 +17,7 @@ export default function Read() {
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center text-black">
       <Header blueText="Write" backButtonLink="/terminal" />
 
       <div className="my-5">
@@ -31,7 +31,7 @@ export default function Read() {
 
       <pre>{JSON.stringify(cardData, null, 2)}</pre>
 
-      <Button type="tool" onClick={handleSubmit}>
+      <Button bgColor="gray" onClick={handleSubmit}>
         Submit & Write
       </Button>
     </div>
