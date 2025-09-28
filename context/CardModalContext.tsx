@@ -25,6 +25,8 @@ type ModalState =
 type CardContextType = {
   modalState: ModalState;
   setModalState: (open: ModalState) => void;
+  modalMessage: string | null;
+  setModalMessage: (message: string | null) => void;
   cardData: string | null;
   setCardData: (data: string | null) => void;
   actionData: { name: string; price: number } | null;
@@ -36,6 +38,7 @@ const CardContext = createContext<CardContextType | undefined>(undefined);
 export function CardProvider({ children }: { children: ReactNode }) {
   const [cardData, setCardData] = useState<string | null>(null);
   const [modalState, setModalState] = useState("closed" as ModalState);
+  const [modalMessage, setModalMessage] = useState<string | null>(null);
   const [actionData, setActionData] = useState<{
     name: string;
     price: number;
@@ -66,6 +69,8 @@ export function CardProvider({ children }: { children: ReactNode }) {
         setModalState,
         actionData: actionData,
         setActionData: setActionData,
+        modalMessage,
+        setModalMessage,
       }}
     >
       {content}

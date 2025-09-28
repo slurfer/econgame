@@ -10,6 +10,13 @@ export async function POST(request: Request) {
   const body: ApiPostTransactionRequest = await request.json();
 
   try {
+    const card = await prisma.card.findUnique({
+      where: { id: body.cardId },
+    });
+    if (!card) {
+      return NextResponse.json({ error: "Card not found" }, { status: 404 });
+    }
+
     const cardBalance = await prisma.transaction.aggregate({
       _sum: { price: true },
       where: { cardId: body.cardId },
@@ -34,6 +41,7 @@ export async function POST(request: Request) {
       owner: transaction.owner,
       price: transaction.price,
       cardId: transaction.cardId,
+      balance: (cardBalance._sum.price ?? 0) - body.price,
     };
 
     console.log(

@@ -8,4 +8,5 @@ export interface ApiPostTransactionResponse {
   owner: string;
   price: number;
   cardId: string;
+  balance: number;
 }

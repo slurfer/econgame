@@ -12,8 +12,14 @@ import Button from "@/app/components/Buttons/Button";
 import PhoneLayout from "@/app/components/PhoneLayout";
 
 export default function ShopPage() {
-  const { cardData, actionData, setActionData, setModalState, setCardData } =
-    useCard();
+  const {
+    cardData,
+    actionData,
+    setActionData,
+    setModalState,
+    setCardData,
+    setModalMessage,
+  } = useCard();
 
   const paymentInProgress = useRef(false);
 
@@ -36,7 +42,13 @@ export default function ShopPage() {
         }),
       });
       paymentInProgress.current = false;
-      setModalState(res.ok ? "success" : "error");
+      const data = await res.json();
+      if (!res.ok) {
+        if (data && data.error) setModalMessage(data.error);
+        setModalState("error");
+        return;
+      }
+      setModalState("success");
     }
 
     async function handleClose() {
@@ -49,7 +61,13 @@ export default function ShopPage() {
         }),
       });
       paymentInProgress.current = false;
-      setModalState(res.ok ? "success" : "error");
+      const data = await res.json();
+      if (!res.ok) {
+        if (data && data.error) setModalMessage(data.error);
+        setModalState("error");
+        return;
+      }
+      setModalState("success");
     }
 
     if (actionData.price === 0) {

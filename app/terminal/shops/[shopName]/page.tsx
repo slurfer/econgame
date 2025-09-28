@@ -14,8 +14,14 @@ function getShopColor(shopName: string): string {
 }
 
 export default function ShopPage() {
-  const { cardData, actionData, setActionData, setModalState, setCardData } =
-    useCard();
+  const {
+    cardData,
+    actionData,
+    setActionData,
+    setModalState,
+    setCardData,
+    setModalMessage,
+  } = useCard();
   const { items, shops } = useShopData();
   const { shopName }: { shopName: string } = useParams();
 
@@ -44,7 +50,14 @@ export default function ShopPage() {
         }),
       });
       paymentInProgress.current = false;
-      setModalState(res.ok ? "closed" : "error");
+      const data = await res.json();
+      if (!res.ok) {
+        if (data && data.error) setModalMessage(data.error);
+        setModalState("error");
+        return;
+      }
+      setModalMessage(`New balance: ${data.balance} CZK`);
+      setModalState("success");
     }
 
     handlePayment();

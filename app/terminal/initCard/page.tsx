@@ -8,7 +8,7 @@ import { ApiPostCardResponse } from "@/types/api/card";
 import PhoneLayout from "@/app/components/PhoneLayout";
 
 export default function Read() {
-  const { cardData, setCardData, setModalState } = useCard();
+  const { cardData, setCardData, setModalState, setModalMessage } = useCard();
   const [inputText, setInputText] = useState("");
 
   const handleSubmit = async () => {
@@ -18,11 +18,12 @@ export default function Read() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ owner: inputText }),
     });
+    const data: ApiPostCardResponse = await res.json();
     if (!res.ok) {
+      if (data && data.error) setModalMessage(data.error);
       setModalState("error");
       return;
     }
-    const data: ApiPostCardResponse = await res.json();
     if (!data.data) {
       setModalState("error");
       return;

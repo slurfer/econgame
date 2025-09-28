@@ -7,7 +7,7 @@ import { blue, green, red } from "@mui/material/colors";
 import CloseModal from "./CloseModal";
 
 export default function CardError() {
-  const { setModalState } = useCard();
+  const { modalMessage } = useCard();
   return (
     <Container maxWidth="sm">
       <div className="flex flex-col items-center justify-center min-h-screen">
@@ -22,7 +22,7 @@ export default function CardError() {
         </Avatar>
         <div className="w-full m-[1.8rem]"></div>
         <Typography variant="h4" align="center">
-          Error while changing card balance
+          {modalMessage || "Error while changing card balance"}
         </Typography>
         <div className="w-full m-[4.2rem]"></div>
         <CloseModal />
