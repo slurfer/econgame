@@ -14,7 +14,7 @@ function getShopColor(shopName: string): string {
 }
 
 export default function ShopPage() {
-  const { cardData, buyItem, setBuyItem, setModalState, setCardData } =
+  const { cardData, actionData, setActionData, setModalState, setCardData } =
     useCard();
   const { items, shops } = useShopData();
   const { shopName }: { shopName: string } = useParams();
@@ -26,12 +26,12 @@ export default function ShopPage() {
   const paymentInProgress = useRef(false);
 
   useEffect(() => {
-    if (cardData === null || buyItem === null || paymentInProgress.current)
+    if (cardData === null || actionData === null || paymentInProgress.current)
       return;
     paymentInProgress.current = true;
     setModalState("loading");
-    const { name, price } = buyItem;
-    setBuyItem(null);
+    const { name, price } = actionData;
+    setActionData(null);
 
     async function handlePayment() {
       const res = await fetch("/api/transaction", {
@@ -49,7 +49,7 @@ export default function ShopPage() {
 
     handlePayment();
     setCardData(null);
-  }, [cardData, buyItem]);
+  }, [cardData, actionData]);
 
   return (
     <div
@@ -66,7 +66,7 @@ export default function ShopPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
           {items.map((item) => {
             const onClick = () => {
-              setBuyItem({ name: item.name, price: item.prices[shopName] });
+              setActionData({ name: item.name, price: item.prices[shopName] });
               setCardData(null);
               setModalState("reading");
             };

@@ -12,18 +12,18 @@ import Button from "@/app/components/Buttons/Button";
 import PhoneLayout from "@/app/components/PhoneLayout";
 
 export default function ShopPage() {
-  const { cardData, buyItem, setBuyItem, setModalState, setCardData } =
+  const { cardData, actionData, setActionData, setModalState, setCardData } =
     useCard();
 
   const paymentInProgress = useRef(false);
 
   useEffect(() => {
-    if (cardData === null || buyItem === null || paymentInProgress.current)
+    if (cardData === null || actionData === null || paymentInProgress.current)
       return;
     paymentInProgress.current = true;
     setModalState("loading");
-    const { name, price } = buyItem;
-    setBuyItem(null);
+    const { name, price } = actionData;
+    setActionData(null);
 
     async function handleOpen() {
       const res = await fetch("/api/shoppingList/open", {
@@ -52,13 +52,13 @@ export default function ShopPage() {
       setModalState(res.ok ? "success" : "error");
     }
 
-    if (buyItem.price === 0) {
+    if (actionData.price === 0) {
       handleClose();
     } else {
       handleOpen();
     }
     setCardData(null);
-  }, [cardData, buyItem]);
+  }, [cardData, actionData]);
 
   return (
     <PhoneLayout>
@@ -70,12 +70,12 @@ export default function ShopPage() {
       <br />
       {shoppingLists.map((list) => {
         const open = () => {
-          setBuyItem({ name: list.name, price: list.price });
+          setActionData({ name: list.name, price: list.price });
           setCardData(null);
           setModalState("reading");
         };
         const close = () => {
-          setBuyItem({ name: list.name, price: 0 });
+          setActionData({ name: list.name, price: 0 });
           setCardData(null);
           setModalState("reading");
         };
