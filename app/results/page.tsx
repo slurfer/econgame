@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type Card = {
   id: string;
@@ -64,24 +65,23 @@ export default function CompetitionPage() {
           </thead>
           <tbody>
             {cards.map((card, index) => (
-              <tr
-                key={card.id}
-                className="border-t border-gray-300 hover:bg-gray-100"
-              >
-                <td className="px-4 py-2 font-bold">{index + 1}</td>
-                <td className="px-4 py-2">{card.owner}</td>
-                <td className="px-4 py-2">{card.balance}</td>
-                <td className="px-4 py-2">{card.transactions}</td>
-                <td className="px-4 py-2">{card.shoppingLists}</td>
-                <td className="px-4 py-2">{card.unfinishedShoppingLists}</td>
-                <td
-                  className={`px-4 py-2 font-bold ${
-                    card.points < 0 ? "text-red-600" : "text-green-600"
-                  }`}
-                >
-                  {card.points}
-                </td>
-              </tr>
+              <Link key={card.id} href={`/terminal/cardInfo/${card.id}`}>
+                <tr className="border-t border-gray-300 hover:bg-gray-100">
+                  <td className="px-4 py-2 font-bold">{index + 1}</td>
+                  <td className="px-4 py-2">{card.owner}</td>
+                  <td className="px-4 py-2">{card.balance}</td>
+                  <td className="px-4 py-2">{card.transactions}</td>
+                  <td className="px-4 py-2">{card.shoppingLists}</td>
+                  <td className="px-4 py-2">{card.unfinishedShoppingLists}</td>
+                  <td
+                    className={`px-4 py-2 font-bold ${
+                      card.points < 0 ? "text-red-600" : "text-green-600"
+                    }`}
+                  >
+                    {card.points}
+                  </td>
+                </tr>
+              </Link>
             ))}
           </tbody>
         </table>
