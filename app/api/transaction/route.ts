@@ -10,6 +10,18 @@ export async function POST(request: Request) {
   const body: ApiPostTransactionRequest = await request.json();
 
   try {
+    const cardBalance = await prisma.transaction.aggregate({
+      _sum: { price: true },
+      where: { cardId: body.cardId },
+    });
+
+    if ((cardBalance._sum.price ?? 0) - body.price < 0) {
+      return NextResponse.json(
+        { error: "Insufficient funds on card" },
+        { status: 400 }
+      );
+    }
+
     const transaction = await prisma.transaction.create({
       data: {
         owner: body.owner,
