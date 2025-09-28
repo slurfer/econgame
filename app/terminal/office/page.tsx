@@ -57,6 +57,7 @@ export default function ShopPage() {
     } else {
       handleOpen();
     }
+    setCardData(null);
   }, [cardData, buyItem]);
 
   return (

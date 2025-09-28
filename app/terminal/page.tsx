@@ -2,7 +2,7 @@
 
 import { useCard } from "@/context/CardModalContext";
 import Header from "../components/Header";
-import PhoneLayout from "../components/PhoneLayout";
+import PhoneLayout from "@/app/components/PhoneLayout";
 import LinkButton from "@/app/components/Buttons/LinkButton";
 import config from "@/config/game.json"; // static import
 import { ShopType } from "@/types/ItemType";
@@ -36,9 +36,13 @@ export default function Home() {
       <LinkButton bgColor="orange" link="/terminal/office">
         Office
       </LinkButton>
+      <LinkButton bgColor="green" link="/terminal/cardInfo">
+        Get card info
+      </LinkButton>
       <LinkButton bgColor="gray" link="/terminal/initCard">
         Init card
       </LinkButton>
+      <div className="w-full h-15"></div>
       <LinkButton bgColor="gray" link="/terminal/read">
         Read
       </LinkButton>

@@ -10,7 +10,7 @@ export default function Button({
   onClick: () => void;
 }) {
   return (
-    <div onClick={onClick}>
+    <div className="w-full" onClick={onClick}>
       <ButtonWrapper bgColor={bgColor}>{children}</ButtonWrapper>
     </div>
   );

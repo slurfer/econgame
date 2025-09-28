@@ -48,6 +48,7 @@ export default function ShopPage() {
     }
 
     handlePayment();
+    setCardData(null);
   }, [cardData, buyItem]);
 
   return (

@@ -22,6 +22,7 @@ export default function CardReading() {
         setModalState("success");
       },
       () => {
+        setCardData(null);
         setModalState("error");
       }
     );

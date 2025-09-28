@@ -47,7 +47,7 @@ export default function CompetitionPage() {
   }
 
   return (
-    <div className="p-8">
+    <div className="p-8 text-black">
       <h1 className="text-2xl font-bold mb-6 text-center">EconGame 🏆</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full border border-gray-300 rounded-lg overflow-hidden">

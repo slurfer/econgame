@@ -12,6 +12,11 @@ export default function Read() {
   const onClick = () => {
     setCardData(null);
     setModalState("reading");
+    setTimeout(() => {
+      if (cardData !== null) {
+        setCardData(null);
+      }
+    }, 5000);
   };
 
   return (
