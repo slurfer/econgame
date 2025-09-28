@@ -32,6 +32,10 @@ export default function Home() {
       ))}
 
       {/* Other terminal actions */}
+      <div className="w-full h-15"></div>
+      <LinkButton bgColor="orange" link="/terminal/office">
+        Office
+      </LinkButton>
       <LinkButton bgColor="gray" link="/terminal/initCard">
         Init card
       </LinkButton>

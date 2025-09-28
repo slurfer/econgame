@@ -48,5 +48,46 @@
       "name": "Avokádo",
       "prices": [55, 58, 60, 65, 75]
     }
+  ],
+  "shoppingLists": [
+    {
+      "name": "Základní",
+      "price": 1000,
+      "items": ["Jablko", "Hruška", "Banán"]
+    },
+    {
+      "name": "Tropické",
+      "price": 1500,
+      "items": [
+        "Pomeranč",
+        "Meloun",
+        "Ananas",
+        "Mango",
+        "Papája",
+        "Kiwi",
+        "Avokádo"
+      ]
+    },
+    {
+      "name": "Všechny",
+      "price": 2000,
+      "items": [
+        "Jablko",
+        "Hruška",
+        "Banán",
+        "Pomeranč",
+        "Meloun",
+        "Ananas",
+        "Mango",
+        "Papája",
+        "Kiwi",
+        "Avokádo"
+      ]
+    },
+    {
+      "name": "Ovocný mix",
+      "price": 1200,
+      "items": ["Jablko", "Banán", "Pomeranč", "Meloun", "Mango", "Kiwi"]
+    }
   ]
 }
