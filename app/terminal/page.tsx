@@ -6,8 +6,6 @@ import PhoneLayout from "@/app/components/PhoneLayout";
 import LinkButton from "@/app/components/Buttons/LinkButton";
 import config from "@/config/game.json"; // static import
 import { ShopType } from "@/types/ItemType";
-import Button from "../components/Buttons/Button";
-import resetGame from "@/util/resetGame";
 
 export default function Home() {
   // Extract shops from JSON

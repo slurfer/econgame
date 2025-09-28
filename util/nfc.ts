@@ -37,7 +37,7 @@ export const writeNfc = async (
     await ndef.write(message);
     writeLock = false;
     onDone();
-  } catch (error) {
+  } catch (_error) {
     onError();
   }
 };

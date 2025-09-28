@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/util/prisma";
-import { ApiPostCardRequest, ApiPostCardResponse } from "@/types/api/card";
-import { ApiCardCardIdResponse, ApiGetStatsResponse } from "@/types/api/stats";
+import { ApiCardCardIdResponse } from "@/types/api/stats";
 import { unfinishedShoppingListPenalty } from "@/config/config.json";
 import { notFound } from "next/navigation";
 

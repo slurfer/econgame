@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import config from "@/config/game.json";
 import { ItemType, ShopType } from "@/types/ItemType";
 import { ApiPrices } from "@/types/api/response/prices";
-import { clear } from "console";
 import { refreshInterval } from "@/config/config.json";
 
 function getRandomItem<T>(list: T[]): T {

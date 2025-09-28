@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Header from "@/app/components/Header";
 
-export default function () {
+export default function CardInfoPage() {
   const { setCardData, setModalState, cardData } = useCard();
   const router = useRouter();
 

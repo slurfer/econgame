@@ -1,13 +1,8 @@
 "use client";
-import Item from "@/app/components/Item";
-import { notFound, useParams } from "next/navigation";
 import { useCard } from "@/context/CardModalContext";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Header from "@/app/components/Header";
-import RefreshCounter from "@/app/components/RefreshCounter";
-import { useShopData } from "@/context/ShopDataContext";
 import { shoppingLists } from "@/config/game.json";
-import ShoppingList from "@/app/components/ShoppingList";
 import Button from "@/app/components/Buttons/Button";
 import PhoneLayout from "@/app/components/PhoneLayout";
 

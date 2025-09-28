@@ -2,7 +2,7 @@
 import Item from "@/app/components/Item";
 import { notFound, useParams } from "next/navigation";
 import { useCard } from "@/context/CardModalContext";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Header from "@/app/components/Header";
 import RefreshCounter from "@/app/components/RefreshCounter";
 import { useShopData } from "@/context/ShopDataContext";

@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useCard } from "@/context/CardModalContext";
-import { Check, Clear } from "@mui/icons-material";
-import { Avatar, Button, Container, Typography } from "@mui/material";
-import { blue, green, red } from "@mui/material/colors";
+import { Check } from "@mui/icons-material";
+import { Avatar, Container, Typography } from "@mui/material";
+import { green } from "@mui/material/colors";
 import CloseModal from "./CloseModal";
 
 export default function CardSuccess() {

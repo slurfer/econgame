@@ -5,14 +5,7 @@ import CardError from "@/app/components/CardModal/CardError";
 import CardSuccess from "@/app/components/CardModal/CardSuccess";
 import CardWriting from "@/app/components/CardModal/CardWriting";
 import Loading from "@/app/components/CardModal/Loading";
-import {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  ComponentType,
-  useEffect,
-} from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
 type ModalState =
   | "closed"

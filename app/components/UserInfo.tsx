@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from "react";
 import PhoneLayout from "@/app/components/PhoneLayout";
-import { useParams } from "next/navigation";
 import Header from "@/app/components/Header";
-import Button from "@/app/components/Buttons/Button";
 
 type Card = {
   id: string;

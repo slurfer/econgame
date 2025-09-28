@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Avatar, Button, Container, Typography } from "@mui/material";
+import { Avatar, Container, Typography } from "@mui/material";
 import { Sensors } from "@mui/icons-material";
 import { blue } from "@mui/material/colors";
 import CloseModal from "./CloseModal";

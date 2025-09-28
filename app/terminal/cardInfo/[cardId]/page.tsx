@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import PhoneLayout from "@/app/components/PhoneLayout";
 import { useParams } from "next/navigation";
 import Header from "@/app/components/Header";
@@ -9,19 +8,9 @@ import UserInfo from "@/app/components/UserInfo";
 import { useCard } from "@/context/CardModalContext";
 import { QRCodeCanvas } from "qrcode.react";
 
-type Card = {
-  id: string;
-  owner: string;
-  balance: number;
-  transactions: number;
-  shoppingLists: number;
-  unfinishedShoppingLists: number;
-  points: number;
-};
-
 export default function CardPage() {
   const { cardId }: { cardId: string } = useParams();
-  const { cardData, setCardData, setModalState } = useCard();
+  const { setCardData, setModalState } = useCard();
 
   function handleReinit() {
     setCardData(cardId);

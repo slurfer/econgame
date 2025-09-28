@@ -8,7 +8,7 @@ import { ApiPostCardResponse } from "@/types/api/card";
 import PhoneLayout from "@/app/components/PhoneLayout";
 
 export default function Read() {
-  const { cardData, setCardData, setModalState, setModalMessage } = useCard();
+  const { setCardData, setModalState, setModalMessage } = useCard();
   const [inputText, setInputText] = useState("");
 
   const handleSubmit = async () => {

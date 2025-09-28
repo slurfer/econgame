@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       },
     });
 
-    const transaction = await prisma.transaction.create({
+    await prisma.transaction.create({
       data: {
         owner: body.name,
         price: body.price,

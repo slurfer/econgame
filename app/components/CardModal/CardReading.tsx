@@ -1,9 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { decodeNfcRecord, readNfc } from "@/util/nfc";
-import { Avatar, Button, Container, Typography } from "@mui/material";
-import { Sensors } from "@mui/icons-material";
-import { blue } from "@mui/material/colors";
 import { useCard } from "@/context/CardModalContext";
 import CardInteracting from "./CardInteracting";
 

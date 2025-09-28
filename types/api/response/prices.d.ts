@@ -1,5 +1,3 @@
-import { ApiResponse } from "./response/response";
-
 export interface ApiPrices {
   items: {
     name: string;

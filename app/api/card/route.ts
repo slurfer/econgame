@@ -93,8 +93,6 @@ export async function GET() {
       const unfinishedShoppingListSum =
         unfinishedShoppingLists.find((s) => s.cardId === card.id)?._sum.price ||
         0;
-      const shoppingListSum =
-        shoppingListsCount.find((s) => s.cardId === card.id)?._sum.price || 0;
 
       const points =
         transaction_sum -
