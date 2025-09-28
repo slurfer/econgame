@@ -12,12 +12,12 @@ export default function Home() {
         blueText="EconGame!"
         showBackButton={false}
       />
-      <LinkButton bgColor="gray" link="/terminal">
+      <LinkButton bgColor="green" link="/terminal">
         Terminal
       </LinkButton>
-      <ItemButton bgColor="gray" onClick={() => alert("Clicked!")}>
-        Click me
-      </ItemButton>
+      <LinkButton bgColor="orange" link="/results">
+        Results
+      </LinkButton>
     </PhoneLayout>
   );
 }

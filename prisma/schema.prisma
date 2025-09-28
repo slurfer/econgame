@@ -17,7 +17,7 @@ model Transaction {
   id    String  @id @default(uuid()) @db.Char(36)
   owner  String
   price Int
-  card  Card    @relation(fields: [cardId], references: [id])
+  card  Card    @relation(fields: [cardId], references: [id], onDelete: Cascade)
   cardId String @db.Char(36)
   date  DateTime @default(now())
 }
@@ -36,5 +36,5 @@ model ShoppingList {
   completed Boolean   @default(false)
   price Int
   cardId String      @db.Char(36)
-  card  Card        @relation(fields: [cardId], references: [id])
+  card  Card        @relation(fields: [cardId], references: [id], onDelete: Cascade)
 }

@@ -1,3 +1,4 @@
 {
-  "refreshInterval": 300000
+  "refreshInterval": 300000,
+  "unfinishedShoppingListPenalty": 50
 }
