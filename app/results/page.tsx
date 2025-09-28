@@ -16,11 +16,10 @@ export default function CompetitionPage() {
   const [cards, setCards] = useState<Card[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  const fetchCards = () => {
     fetch("/api/card")
       .then((res) => res.json())
       .then((data) => {
-        // seřadíme karty podle bodů sestupně
         const sortedCards = data.data.cards.sort(
           (a: Card, b: Card) => b.points - a.points
         );
@@ -31,6 +30,16 @@ export default function CompetitionPage() {
         console.error(err);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchCards(); // načtení při startu
+
+    const interval = setInterval(() => {
+      fetchCards(); // obnovování každou minutu
+    }, 30000);
+
+    return () => clearInterval(interval); // vyčištění intervalu při odchodu z komponenty
   }, []);
 
   if (loading) {
