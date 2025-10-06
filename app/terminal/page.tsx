@@ -4,12 +4,12 @@ import { useCard } from "@/context/CardModalContext";
 import Header from "../components/Header";
 import PhoneLayout from "@/app/components/PhoneLayout";
 import LinkButton from "@/app/components/Buttons/LinkButton";
-import config from "@/config/game.json"; // static import
+import shopConfig from "@/data/shops.json"; // static import
 import { ShopType } from "@/types/ItemType";
 
 export default function Home() {
   // Extract shops from JSON
-  const shops: ShopType[] = config.shops;
+  const shops: ShopType[] = shopConfig.shops;
   const { setModalState } = useCard();
 
   return (

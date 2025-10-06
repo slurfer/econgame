@@ -1,0 +1,10 @@
+{
+  "shops": [
+    { "name": "Billa", "color": "#FFCE30" },
+    { "name": "Kaufland", "color": "#E50920" },
+    { "name": "Lidl", "color": "#00459D" },
+    { "name": "Tesco", "color": "#F41930" },
+    { "name": "Albert", "color": "#FFA500" },
+    { "name": "Penny", "color": "#800080" }
+  ]
+}

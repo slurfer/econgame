@@ -2,7 +2,7 @@
 import { useCard } from "@/context/CardModalContext";
 import { useEffect, useRef } from "react";
 import Header from "@/app/components/Header";
-import { shoppingLists } from "@/config/game.json";
+import { shoppingLists } from "@/data/lists.json";
 import Button from "@/app/components/Buttons/Button";
 import PhoneLayout from "@/app/components/PhoneLayout";
 

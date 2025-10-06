@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import config from "@/config/game.json";
+import { shops } from "@/data/shops.json";
+import { items } from "@/data/items.json";
 import { ItemType, ShopType } from "@/types/ItemType";
 import { ApiPrices } from "@/types/api/response/prices";
 import { refreshInterval } from "@/config/config.json";
@@ -25,8 +26,6 @@ let pricesLock = false;
 
 function setPrices() {
   console.log("Setting new prices...");
-  const items: ItemType[] = config.items;
-  const shops: ShopType[] = config.shops;
   const shopNames = shops.map((shop) => shop.name);
 
   prices = {

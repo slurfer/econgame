@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import Header from "@/app/components/Header";
 import RefreshCounter from "@/app/components/RefreshCounter";
 import { useShopData } from "@/context/ShopDataContext";
-import { shops as staticShops } from "@/config/game.json";
+import { shops as staticShops } from "@/data/shops.json";
 
 function getShopColor(shopName: string): string {
   const shop = staticShops.find((s) => s.name === shopName);
