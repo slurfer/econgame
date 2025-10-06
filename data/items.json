@@ -18,7 +18,7 @@
     },
     {
       "name": "Kmín",
-      "prices": [30, 32, 35, 40, 50]
+      "prices": [20, 23, 26, 29, 32]
     },
     {
       "name": "Těstoviny",
@@ -69,7 +69,7 @@
       "prices": [27, 31, 35, 39, 43]
     },
     {
-      "name": "Bilý jogurt",
+      "name": "Bílý jogurt",
       "prices": [21, 24, 27, 30, 34]
     }
   ]
