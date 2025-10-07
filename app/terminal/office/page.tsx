@@ -90,7 +90,7 @@ export default function ShopPage() {
         return (
           <div className="w-full" key={list.name}>
             <Button onClick={open} bgColor="green">
-              {`Otevřít "${list.name}"`}
+              {`${list.number}. ${list.name}`}
             </Button>
           </div>
         );

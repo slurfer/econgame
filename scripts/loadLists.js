@@ -44,8 +44,9 @@ export function loadLists() {
         .filter(Boolean);
       if (parts.length === 0) return null;
 
-      const name = parts[0];
-      const itemNames = parts.slice(1);
+      const number = parts[0];
+      const name = parts[1];
+      const itemNames = parts.slice(2);
 
       // Calculate sum of medians
       let price = 0;
@@ -58,6 +59,7 @@ export function loadLists() {
       }
 
       return {
+        number,
         name,
         price,
         items: itemNames,
