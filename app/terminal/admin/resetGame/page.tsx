@@ -2,6 +2,7 @@
 import { useCard } from "@/context/CardModalContext";
 import Button from "@/app/components/Buttons/Button";
 import PhoneLayout from "@/app/components/PhoneLayout";
+import Header from "@/app/components/Header";
 
 export default function ResetGame() {
   const { setModalState } = useCard();
@@ -17,6 +18,11 @@ export default function ResetGame() {
 
   return (
     <PhoneLayout>
+      <Header
+        blackText="Reset"
+        blueText="Game"
+        backButtonLink="/terminal/admin"
+      />
       <div className="text-2xl"> DANGER ZONE: </div>
 
       <Button bgColor="red" onClick={onResetGame}>
