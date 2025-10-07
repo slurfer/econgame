@@ -14,7 +14,7 @@ export default function Home() {
       <LinkButton bgColor="green" link="/terminal">
         Terminal
       </LinkButton>
-      <LinkButton bgColor="orange" link="/results">
+      <LinkButton bgColor="orange" link="/public/results">
         Results
       </LinkButton>
     </PhoneLayout>
