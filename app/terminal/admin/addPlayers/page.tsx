@@ -28,7 +28,7 @@ export default function InitCardsPage() {
 
     for (const name of names) {
       try {
-        const res = await fetch("/api/card", {
+        const res = await fetch("/api/admin/card", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ owner: name }),

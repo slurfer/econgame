@@ -13,7 +13,7 @@ export default function Read() {
 
   const handleSubmit = async () => {
     setModalState("loading");
-    const res = await fetch("/api/card", {
+    const res = await fetch("/api/admin/card", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ owner: inputText }),

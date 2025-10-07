@@ -7,10 +7,12 @@ import Button from "@/app/components/Buttons/Button";
 import UserInfo from "@/app/components/UserInfo";
 import { useCard } from "@/context/CardModalContext";
 import { QRCodeCanvas } from "qrcode.react";
+import { useSession } from "next-auth/react";
 
 export default function CardPage() {
   const { cardId }: { cardId: string } = useParams();
   const { setCardData, setModalState } = useCard();
+  const { data: session } = useSession();
 
   function handleReinit() {
     setCardData(cardId);
@@ -28,10 +30,14 @@ export default function CardPage() {
           size={200}
         />
       </div>
-      <div className="h-6"></div>
-      <Button bgColor="green" onClick={handleReinit}>
-        ReinitCard
-      </Button>
+      {session?.user?.role === "admin" && (
+        <>
+          <div className="h-6"></div>
+          <Button bgColor="green" onClick={handleReinit}>
+            ReinitCard
+          </Button>
+        </>
+      )}
     </PhoneLayout>
   );
 }

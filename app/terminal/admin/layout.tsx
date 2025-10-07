@@ -11,26 +11,14 @@ export default function RootLayout({
 }) {
   const { data: session, status } = useSession();
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      signIn(undefined, { callbackUrl: "/init-cards" });
-    }
-  }, [status]);
-
-  if (status === "loading") {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-600">Checking authentication...</p>
-      </div>
-    );
+  if (status === "loading") return <p>Loading...</p>;
+  if (status === "unauthenticated") return <p>Not logged in</p>;
+  if (session?.user?.role !== "admin") {
+    return <p>Access Denied</p>;
   }
 
   if (status === "authenticated") {
-    return (
-      <ShopDataProvider>
-        <CardProvider>{children}</CardProvider>
-      </ShopDataProvider>
-    );
+    return <>{children}</>;
   }
   return null;
 }

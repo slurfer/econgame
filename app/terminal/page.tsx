@@ -7,11 +7,12 @@ import LinkButton from "@/app/components/Buttons/LinkButton";
 import shopConfig from "@/data/shops.json"; // static import
 import { ShopType } from "@/types/ItemType";
 import Logout from "@/app/components/Logout";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
   // Extract shops from JSON
   const shops: ShopType[] = shopConfig.shops;
-  const { setModalState } = useCard();
+  const { data: session, status } = useSession();
 
   return (
     <PhoneLayout>
@@ -40,9 +41,11 @@ export default function Home() {
       </LinkButton>
       <div className="w-full h-15"></div>
       <Logout />
-      <LinkButton bgColor="gray" link="/terminal/admin">
-        Admin
-      </LinkButton>
+      {session?.user?.role === "admin" && (
+        <LinkButton bgColor="gray" link="/terminal/admin">
+          Admin
+        </LinkButton>
+      )}
     </PhoneLayout>
   );
 }
