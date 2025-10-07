@@ -33,7 +33,7 @@ export default function LoginPage() {
         showUserInfo={false}
         backButtonLink="/"
       />
-      <div className="flex flex-col items-center justify-center h-screen absolute top-0 left-0 w-full">
+      <div className="flex flex-col items-center justify-center h-screen absolute top-0 left-0 w-full bg-white">
         <form
           onSubmit={handleSubmit}
           className="border p-6 rounded-md shadow-md w-80 space-y-3"
