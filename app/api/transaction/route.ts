@@ -94,7 +94,7 @@ export async function GET(req: NextRequest) {
   });
 }
 
-export function writeToStream(data: any) {
+export function writeToStream(data: object) {
   const encoder = new TextEncoder();
   const payload = encoder.encode(`data: ${JSON.stringify(data)}\n\n`);
 

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { shops } from "@/data/shops.json";
 import { items } from "@/data/items.json";
-import { ItemType, ShopType } from "@/types/ItemType";
+import { ItemType } from "@/types/ItemType";
 import { ApiPrices } from "@/types/api/response/prices";
 import { refreshInterval } from "@/config/config.json";
 

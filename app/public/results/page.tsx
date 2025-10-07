@@ -16,7 +16,6 @@ type Card = {
 export default function CompetitionPage() {
   const [cards, setCards] = useState<Card[]>([]);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
 
   const fetchCards = () => {
     fetch("/api/card")
@@ -65,26 +64,28 @@ export default function CompetitionPage() {
             </tr>
           </thead>
           <tbody>
-            {cards.map((card, index) => (
-              <tr
-                key={card.id}
-                className="border-t border-gray-300 hover:bg-gray-100"
-              >
-                <td className="px-4 py-2 font-bold">{index + 1}</td>
-                <td className="px-4 py-2">{card.owner}</td>
-                <td className="px-4 py-2">{card.balance}</td>
-                <td className="px-4 py-2">{card.transactions}</td>
-                <td className="px-4 py-2">{card.shoppingLists}</td>
-                <td className="px-4 py-2">{card.unfinishedShoppingLists}</td>
-                <td
-                  className={`px-4 py-2 font-bold ${
-                    card.points < 0 ? "text-red-600" : "text-green-600"
-                  }`}
+            {cards
+              .map((card, index) => (
+                <tr
+                  key={card.id}
+                  className="border-t border-gray-300 hover:bg-gray-100"
                 >
-                  {card.points}
-                </td>
-              </tr>
-            )).slice(0, 10)}
+                  <td className="px-4 py-2 font-bold">{index + 1}</td>
+                  <td className="px-4 py-2">{card.owner}</td>
+                  <td className="px-4 py-2">{card.balance}</td>
+                  <td className="px-4 py-2">{card.transactions}</td>
+                  <td className="px-4 py-2">{card.shoppingLists}</td>
+                  <td className="px-4 py-2">{card.unfinishedShoppingLists}</td>
+                  <td
+                    className={`px-4 py-2 font-bold ${
+                      card.points < 0 ? "text-red-600" : "text-green-600"
+                    }`}
+                  >
+                    {card.points}
+                  </td>
+                </tr>
+              ))
+              .slice(0, 10)}
           </tbody>
         </table>
       </div>

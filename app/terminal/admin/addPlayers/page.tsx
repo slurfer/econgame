@@ -36,7 +36,7 @@ export default function InitCardsPage() {
 
         if (!res.ok) throw new Error("Request failed");
         successNames.push(name);
-      } catch (err) {
+      } catch (_err) {
         failedNames.push(name);
       }
     }
