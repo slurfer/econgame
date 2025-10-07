@@ -39,6 +39,10 @@ export default function Home() {
         Get card info
       </LinkButton>
       <div className="w-full h-15"></div>
+      <LinkButton bgColor="blue" link="/terminal/stats">
+        Statistics
+      </LinkButton>
+      <div className="w-full h-15"></div>
       {session?.user?.role === "admin" && (
         <LinkButton bgColor="gray" link="/terminal/admin">
           Admin
