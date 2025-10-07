@@ -6,6 +6,7 @@ import PhoneLayout from "@/app/components/PhoneLayout";
 import LinkButton from "@/app/components/Buttons/LinkButton";
 import shopConfig from "@/data/shops.json"; // static import
 import { ShopType } from "@/types/ItemType";
+import Logout from "@/app/components/Logout";
 
 export default function Home() {
   // Extract shops from JSON
@@ -37,15 +38,10 @@ export default function Home() {
       <LinkButton bgColor="green" link="/terminal/cardInfo">
         Get card info
       </LinkButton>
-      <LinkButton bgColor="gray" link="/terminal/initCard">
-        Init card
-      </LinkButton>
       <div className="w-full h-15"></div>
-      <LinkButton bgColor="gray" link="/terminal/read">
-        Read
-      </LinkButton>
-      <LinkButton bgColor="gray" link="/terminal/write">
-        Write
+      <Logout />
+      <LinkButton bgColor="gray" link="/terminal/admin">
+        Admin
       </LinkButton>
     </PhoneLayout>
   );

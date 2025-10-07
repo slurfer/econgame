@@ -36,7 +36,7 @@ export default function Read() {
   return (
     <PhoneLayout>
       <div className="text-center">
-        <Header blueText="Init card" backButtonLink="/terminal" />
+        <Header blueText="Init card" backButtonLink="/terminal/admin" />
 
         <div className="my-5 text-black">
           <textarea

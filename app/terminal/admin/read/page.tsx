@@ -20,7 +20,7 @@ export default function Read() {
 
   return (
     <PhoneLayout>
-      <Header blueText="Read" backButtonLink="/terminal" />
+      <Header blueText="Read" backButtonLink="/terminal/admin" />
       <div className="text-black">{JSON.stringify(cardData, null, 2)}</div>
       <Button bgColor="gray" onClick={onClick}>
         Read
