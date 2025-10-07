@@ -18,6 +18,7 @@
     "@mui/material": "^7.3.2",
     "@prisma/client": "^6.16.2",
     "emotion": "^11.0.0",
+    "framer-motion": "^12.23.22",
     "next": "15.5.4",
     "next-auth": "^4.24.11",
     "nfc-react-web": "^0.0.2",

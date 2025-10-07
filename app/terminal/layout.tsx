@@ -13,7 +13,7 @@ export default function RootLayout({
 
   useEffect(() => {
     if (status === "unauthenticated") {
-      signIn(undefined, { callbackUrl: "/init-cards" });
+      signIn(undefined, { callbackUrl: "/" });
     }
   }, [status]);
 
@@ -27,9 +27,9 @@ export default function RootLayout({
 
   if (status === "authenticated") {
     return (
-      <ShopDataProvider>
-        <CardProvider>{children}</CardProvider>
-      </ShopDataProvider>
+      <CardProvider>
+        <ShopDataProvider>{children}</ShopDataProvider>
+      </CardProvider>
     );
   }
   return null;

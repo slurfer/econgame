@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import PhoneLayout from "@/app/components/PhoneLayout";
 import Header from "@/app/components/Header";
+import ShoppingListPlayerOverview from "@/app/components/ShoppingListPlayerOverview";
 
 type Card = {
   id: string;
@@ -89,6 +90,7 @@ export default function UserInfo({ cardId }: { cardId: string }) {
           </span>
         </div>
       </div>
+      <ShoppingListPlayerOverview cardId={cardId} showCloseButton={false} />
     </div>
   );
 }

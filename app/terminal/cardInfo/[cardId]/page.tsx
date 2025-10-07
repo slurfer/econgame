@@ -22,8 +22,6 @@ export default function CardPage() {
   return (
     <PhoneLayout>
       <Header blueText="Card Info" backButtonLink="/terminal" />
-      <UserInfo cardId={cardId} />
-      <div className="h-6"></div>
       <div className="flex justify-center items-center">
         <QRCodeCanvas
           value={`${process.env.NEXT_PUBLIC_URL}/public/results/${cardId}`}
@@ -38,6 +36,8 @@ export default function CardPage() {
           </Button>
         </>
       )}
+      <div className="h-6"></div>
+      <UserInfo cardId={cardId} />
     </PhoneLayout>
   );
 }
