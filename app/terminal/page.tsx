@@ -6,7 +6,6 @@ import PhoneLayout from "@/app/components/PhoneLayout";
 import LinkButton from "@/app/components/Buttons/LinkButton";
 import shopConfig from "@/data/shops.json"; // static import
 import { ShopType } from "@/types/ItemType";
-import Logout from "@/app/components/Logout";
 import { useSession } from "next-auth/react";
 
 export default function Home() {
@@ -40,7 +39,6 @@ export default function Home() {
         Get card info
       </LinkButton>
       <div className="w-full h-15"></div>
-      <Logout />
       {session?.user?.role === "admin" && (
         <LinkButton bgColor="gray" link="/terminal/admin">
           Admin
