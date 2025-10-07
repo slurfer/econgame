@@ -29,11 +29,13 @@ function setPrices() {
   const shopNames = shops.map((shop) => shop.name);
 
   prices = {
-    items: items.map((item) => ({
-      name: item.name,
-      prices: getPricesForItem(item, shopNames),
-      normalPrice: Math.max(...item.prices),
-    })),
+    items: items
+      .map((item) => ({
+        name: item.name,
+        prices: getPricesForItem(item, shopNames),
+        normalPrice: Math.max(...item.prices),
+      }))
+      .sort((item1, item2) => item1.name.localeCompare(item2.name)),
     shops: shopNames,
     timestamp: Date.now() - (Date.now() % refreshInterval),
   };

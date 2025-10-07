@@ -1,43 +1,176 @@
 {
   "shoppingLists": [
     {
-      "name": "Základní",
-      "price": 1000,
-      "items": ["Jablko", "Hruška", "Banán"]
-    },
-    {
-      "name": "Tropické",
-      "price": 1500,
+      "name": "Chilli con carne",
+      "price": 340,
       "items": [
-        "Pomeranč",
-        "Meloun",
-        "Ananas",
-        "Mango",
-        "Papája",
-        "Kiwi",
-        "Avokádo"
+        "mleté maso",
+        "protlak",
+        "kukuřice",
+        "olej",
+        "cibule"
       ]
     },
     {
-      "name": "Všechny",
-      "price": 2000,
+      "name": "Špagety",
+      "price": 404,
       "items": [
-        "Jablko",
-        "Hruška",
-        "Banán",
-        "Pomeranč",
-        "Meloun",
-        "Ananas",
-        "Mango",
-        "Papája",
-        "Kiwi",
-        "Avokádo"
+        "těstoviny",
+        "mleté maso",
+        "cibule",
+        "olej",
+        "protlak",
+        "koření",
+        "sůlpepř"
       ]
     },
     {
-      "name": "Ovocný mix",
-      "price": 1200,
-      "items": ["Jablko", "Banán", "Pomeranč", "Meloun", "Mango", "Kiwi"]
+      "name": "vajíčko s knedlíkem",
+      "price": 236,
+      "items": [
+        "knedlíky",
+        "vejce",
+        "olej",
+        "cibule",
+        "sůlpepř"
+      ]
+    },
+    {
+      "name": "marinované maso",
+      "price": 209,
+      "items": [
+        "koření",
+        "kuřecí maso",
+        "bílý jogurt",
+        "sůlpepř"
+      ]
+    },
+    {
+      "name": "snídaně",
+      "price": 157,
+      "items": [
+        "rohlíky",
+        "slanina",
+        "tuňák",
+        "rajčata",
+        "paprika"
+      ]
+    },
+    {
+      "name": "lečo",
+      "price": 353,
+      "items": [
+        "rajčata",
+        "paprika",
+        "kuřecí maso",
+        "vejce",
+        "cibule",
+        "olej",
+        "sůlpepř"
+      ]
+    },
+    {
+      "name": "guláš",
+      "price": 232,
+      "items": [
+        "knedlíky",
+        "kuřecí maso",
+        "cibule",
+        "koření",
+        "sůlpepř",
+        "paprika"
+      ]
+    },
+    {
+      "name": "rybí pomazánka",
+      "price": 166,
+      "items": [
+        "rohlíky",
+        "tuňák",
+        "sůlpepř",
+        "smetana"
+      ]
+    },
+    {
+      "name": "kuře na paprice",
+      "price": 277,
+      "items": [
+        "kuřecí maso",
+        "paprika",
+        "cibule",
+        "smetana",
+        "olej",
+        "sůlpepř"
+      ]
+    },
+    {
+      "name": "italské těstoviny",
+      "price": 227,
+      "items": [
+        "těstoviny",
+        "tuňák",
+        "rajčata",
+        "cibule",
+        "olej",
+        "sůlpepř"
+      ]
+    },
+    {
+      "name": "carbonara",
+      "price": 154,
+      "items": [
+        "těstoviny",
+        "slanina",
+        "smetana",
+        "cibule",
+        "sůlpepř"
+      ]
+    },
+    {
+      "name": "hemenex",
+      "price": 250,
+      "items": [
+        "vejce",
+        "slanina",
+        "cibule",
+        "olej",
+        "sůlpepř"
+      ]
+    },
+    {
+      "name": "maso na kmíně",
+      "price": 360,
+      "items": [
+        "mleté maso",
+        "cibule",
+        "kmín",
+        "sůlpepř",
+        "olej"
+      ]
+    },
+    {
+      "name": "kuře americana",
+      "price": 295,
+      "items": [
+        "kuřecí maso",
+        "kukuřice",
+        "smetana",
+        "cibule",
+        "olej",
+        "sůlpepř"
+      ]
+    },
+    {
+      "name": "papriková omeleta",
+      "price": 237,
+      "items": [
+        "vejce",
+        "paprika",
+        "rajčata",
+        "cibule",
+        "olej",
+        "sůlpepř"
+      ]
     }
   ]
 }
