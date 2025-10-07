@@ -10,6 +10,19 @@ export async function POST(request: Request) {
   const body: ApiPostOpenShoppingListRequest = await request.json();
 
   try {
+    const shoppingListExists = await prisma.shoppingList.findFirst({
+      where: {
+        cardId: body.cardId,
+        completed: false,
+      },
+    });
+    if (shoppingListExists) {
+      return NextResponse.json(
+        { error: "There is already an open shopping list for this card" },
+        { status: 400 }
+      );
+    }
+
     console.log(body);
     const shoppingList = await prisma.shoppingList.create({
       data: {
@@ -24,6 +37,8 @@ export async function POST(request: Request) {
         owner: body.name,
         price: body.price,
         cardId: body.cardId,
+        shoppingListId: shoppingList.id,
+        isExpense: false,
       },
     });
 

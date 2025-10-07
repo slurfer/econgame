@@ -11,11 +11,18 @@ export interface ApiPostOpenShoppingListResponse {
 }
 
 export interface ApiPostCloseShoppingListRequest {
-  name: string;
   cardId: string;
 }
 
 export interface ApiPostCloseShoppingListResponse {
   name: string;
   cardId: string;
+}
+
+export interface ApiGetShoppingListStatsResponse {
+  name: string;
+  totalSpent: number;
+  itemsBought: number;
+  boughtItems: string[];
+  desiredItems: string[];
 }

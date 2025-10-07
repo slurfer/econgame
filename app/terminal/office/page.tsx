@@ -5,6 +5,7 @@ import Header from "@/app/components/Header";
 import { shoppingLists } from "@/data/lists.json";
 import Button from "@/app/components/Buttons/Button";
 import PhoneLayout from "@/app/components/PhoneLayout";
+import { useRouter } from "next/navigation";
 
 export default function ShopPage() {
   const {
@@ -15,6 +16,7 @@ export default function ShopPage() {
     setCardData,
     setModalMessage,
   } = useCard();
+  const router = useRouter();
 
   const paymentInProgress = useRef(false);
 
@@ -47,22 +49,8 @@ export default function ShopPage() {
     }
 
     async function handleClose() {
-      const res = await fetch("/api/shoppingList/close", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name,
-          cardId: cardData,
-        }),
-      });
-      paymentInProgress.current = false;
-      const data = await res.json();
-      if (!res.ok) {
-        if (data && data.error) setModalMessage(data.error);
-        setModalState("error");
-        return;
-      }
-      setModalState("success");
+      setModalState("closed");
+      router.push(`/terminal/office/player/${cardData}`);
     }
 
     if (actionData.price === 0) {
@@ -73,6 +61,12 @@ export default function ShopPage() {
     setCardData(null);
   }, [cardData, actionData]);
 
+  const close = () => {
+    setActionData({ name: "", price: 0 });
+    setCardData(null);
+    setModalState("reading");
+  };
+
   return (
     <PhoneLayout>
       <Header
@@ -81,24 +75,22 @@ export default function ShopPage() {
         backButtonLink="/terminal"
       />
       <br />
+
+      <Button onClick={close} bgColor="orange">
+        Zavřít nákupní seznam
+      </Button>
+      <div className="h-4" />
       {shoppingLists.map((list) => {
         const open = () => {
           setActionData({ name: list.name, price: list.price });
           setCardData(null);
           setModalState("reading");
         };
-        const close = () => {
-          setActionData({ name: list.name, price: 0 });
-          setCardData(null);
-          setModalState("reading");
-        };
+
         return (
-          <div className="w-full my-10" key={list.name}>
+          <div className="w-full" key={list.name}>
             <Button onClick={open} bgColor="green">
               {`Otevřít "${list.name}"`}
-            </Button>
-            <Button onClick={close} bgColor="orange">
-              {`Dokončit "${list.name}"`}
             </Button>
           </div>
         );

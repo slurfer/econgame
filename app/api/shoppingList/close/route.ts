@@ -10,11 +10,10 @@ export async function POST(request: Request) {
   const body: ApiPostCloseShoppingListRequest = await request.json();
 
   try {
-    console.log(body);
     const shoppingList = await prisma.shoppingList.findFirst({
       where: {
-        name: body.name,
         cardId: body.cardId,
+        completed: false,
       },
     });
     if (!shoppingList) {
@@ -34,6 +33,11 @@ export async function POST(request: Request) {
     await prisma.shoppingList.update({
       where: { id: shoppingList.id },
       data: { completed: true },
+    });
+
+    await prisma.transaction.updateMany({
+      where: { cardId: body.cardId },
+      data: { shoppingListId: shoppingList.id },
     });
 
     const response: ApiPostCloseShoppingListResponse = {

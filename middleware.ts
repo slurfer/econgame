@@ -2,12 +2,21 @@ import { withAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
 
 export default withAuth(
-  // Custom middleware logic
   function middleware(req) {
     const role = req.nextauth.token?.role;
-    console.log(role);
 
-    // Example: only allow admins to access /api routes
+    // Not logged in
+    if (!req.nextauth.token) {
+      // If it's an API route, return 401 instead of redirecting
+      if (req.nextUrl.pathname.startsWith("/api/")) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+
+      // Otherwise, redirect to login (for pages)
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+
+    // Role-based check for admin routes
     if (req.nextUrl.pathname.startsWith("/api/admin") && role !== "admin") {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
@@ -16,14 +25,11 @@ export default withAuth(
   },
   {
     callbacks: {
-      authorized: ({ token }) => !!token, // must be logged in
-    },
-    pages: {
-      signIn: "/login",
+      authorized: () => true, // always run middleware logic above
     },
   }
 );
 
 export const config = {
-  matcher: ["/api/admin/:path*"], // apply to all /api routes
+  matcher: ["/api/admin/:path*"],
 };

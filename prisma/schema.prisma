@@ -20,6 +20,9 @@ model Transaction {
   card  Card    @relation(fields: [cardId], references: [id], onDelete: Cascade)
   cardId String @db.Char(36)
   date  DateTime @default(now())
+  isExpense Boolean @default(true)
+  shoppingList ShoppingList? @relation(fields: [shoppingListId], references: [id])
+  shoppingListId String? @db.Char(36)
 }
 
 model Card {
@@ -37,4 +40,5 @@ model ShoppingList {
   price Int
   cardId String      @db.Char(36)
   card  Card        @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  transactions Transaction[]
 }
