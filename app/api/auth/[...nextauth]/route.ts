@@ -1,7 +1,7 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -12,21 +12,36 @@ const handler = NextAuth({
       async authorize(credentials) {
         if (
           credentials?.username === "admin" &&
-          credentials?.password === "password"
+          credentials?.password === "SecurityThroughObscurity!"
         ) {
-          return { id: "1", name: "Admin" };
+          return { id: "1", name: "Admin", role: "admin" };
+        }
+        if (
+          credentials?.username === "user" &&
+          credentials?.password === "lubosjehot"
+        ) {
+          return { id: "2", name: "User", role: "user" };
         }
         return null;
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) token.role = user.role; // store role in JWT
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) session.user.role = token.role; // expose role in session
+      return session;
+    },
+  },
   pages: {
-    signIn: "/login", // custom login page
+    signIn: "/login",
   },
-  session: {
-    strategy: "jwt",
-  },
+  session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
-});
+};
 
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

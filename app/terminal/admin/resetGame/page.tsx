@@ -7,7 +7,7 @@ export default function ResetGame() {
   const { setModalState } = useCard();
 
   const onResetGame = async () => {
-    const res = await fetch("/api/resetGame", {
+    const res = await fetch("/api/admin/resetGame", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
