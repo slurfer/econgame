@@ -9,6 +9,9 @@ export async function POST(request: Request) {
     const card = await prisma.card.create({
       data: {
         owner,
+        transactions: {
+          create: { owner, price: 500, isExpense: false },
+        },
       },
     });
     const response: ApiPostCardResponse = {
