@@ -23,12 +23,12 @@ export async function POST(request: Request) {
       where: { cardId: body.cardId },
     });
 
-    if ((cardBalance._sum.price ?? 0) - body.price < 0) {
-      return NextResponse.json(
-        { error: "Insufficient funds on card" },
-        { status: 400 }
-      );
-    }
+    // if ((cardBalance._sum.price ?? 0) - body.price < 0) {
+    //   return NextResponse.json(
+    //     { error: "Insufficient funds on card" },
+    //     { status: 400 }
+    //   );
+    // }
 
     const transaction = await prisma.transaction.create({
       data: {
