@@ -24,7 +24,11 @@ export default function Item({
       >
         {name}
       </div>
-      <div className="text-3xl p-3 font-bold text-red-600 flex items-stretch text-left w-full">
+      <div
+        className={`text-3xl p-3 font-bold ${
+          showNormalPrice ? "text-red-600 flex" : "black"
+        } items-stretch text-left w-full`}
+      >
         {price} Kč
         {showNormalPrice && (
           <span className="text-xs text-black ml-2 line-through">
