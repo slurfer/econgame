@@ -8,9 +8,14 @@ import RefreshCounter from "@/app/components/RefreshCounter";
 import { useShopData } from "@/context/ShopDataContext";
 import { shops as staticShops } from "@/data/shops.json";
 
-function getShopColor(shopName: string): string {
+function getShopColor(shopName: string): {
+  bgColor: string;
+  textColor: string;
+} {
   const shop = staticShops.find((s) => s.name === shopName);
-  return shop ? shop.color : "gray";
+  return shop
+    ? { bgColor: shop.bgColor, textColor: shop.textColor }
+    : { bgColor: "gray", textColor: "black" };
 }
 
 export default function ShopPage() {
@@ -67,7 +72,7 @@ export default function ShopPage() {
   return (
     <div
       className="lg:pl-4 h-screen relative"
-      style={{ backgroundColor: getShopColor(shopName) }}
+      style={{ backgroundColor: getShopColor(shopName).bgColor }}
     >
       <div className="bg-white h-full pt-2 overflow-auto shadow-lg">
         <Header
@@ -84,10 +89,12 @@ export default function ShopPage() {
               setCardData(null);
               setModalState("reading");
             };
+            const shopColors = getShopColor(shopName);
             return (
               <div onClick={onClick} key={item.name}>
                 <Item
-                  bgColor={getShopColor(shopName)}
+                  bgColor={shopColors.bgColor}
+                  titleColor={shopColors.textColor}
                   name={item.name}
                   price={item.prices[shopName]} // cena pro aktuální shop
                   normalPrice={item.normalPrice} // běžná cena

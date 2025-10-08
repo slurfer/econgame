@@ -5,5 +5,6 @@ export type ItemType = {
 
 export type ShopType = {
   name: string;
-  color: string;
+  bgColor: string;
+  textColor: string;
 };

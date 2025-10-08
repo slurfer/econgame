@@ -23,7 +23,7 @@ export default function Home() {
       {shops.map((shop) => (
         <LinkButton
           key={shop.name}
-          bgColor={shop.color}
+          bgColor={shop.bgColor}
           link={`/terminal/shops/${shop.name}`}
         >
           {shop.name}

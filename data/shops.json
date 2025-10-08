@@ -1,10 +1,10 @@
 {
   "shops": [
-    { "name": "Billa", "color": "#FFCE30" },
-    { "name": "Kaufland", "color": "#E50920" },
-    { "name": "Lidl", "color": "#00459D" },
-    { "name": "Tesco", "color": "#F41930" },
-    { "name": "Albert", "color": "#FFA500" },
-    { "name": "Penny", "color": "#800080" }
+    { "name": "Billa", "bgColor": "#FFCE30", "textColor": "black" },
+    { "name": "Kaufland", "bgColor": "#E50920", "textColor": "white" },
+    { "name": "Lidl", "bgColor": "#00459D", "textColor": "#FDF251" },
+    { "name": "Tesco", "bgColor": "#F41930", "textColor": "black" },
+    { "name": "Albert", "bgColor": "#FFA500", "textColor": "black" },
+    { "name": "Penny", "bgColor": "#800080", "textColor": "white" }
   ]
 }
