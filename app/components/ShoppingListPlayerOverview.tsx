@@ -31,8 +31,7 @@ export default function PlayerShoppingStatus({
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  //   const { setModalMessage, setModalState } = useCard(); // 🟢 modal from context
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
   const [modalType, setModalType] = useState<"info" | "success" | "error">(
     "info"
@@ -67,7 +66,6 @@ export default function PlayerShoppingStatus({
         const json: ApiResponse = await res.json();
         if (!res.ok || json.status !== "ok") {
           if (res.status === 404) {
-            setModalMessage("No shopping list data available for this card.");
             setData(null);
             return;
           }
@@ -76,8 +74,12 @@ export default function PlayerShoppingStatus({
         if (!json.data) throw new Error("No data in response");
 
         setData(json.data);
-      } catch (err: any) {
-        setModalMessage(err.message);
+      } catch (err) {
+        if (err instanceof Error) {
+          setModalMessage(err.message);
+        } else {
+          setModalMessage("Unknown error occurred");
+        }
         setOpen(true);
       } finally {
         setLoading(false);
