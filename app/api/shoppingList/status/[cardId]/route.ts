@@ -31,7 +31,7 @@ export async function GET(
   });
 
   const transactions = await prisma.transaction.findMany({
-    where: { cardId, shoppingListId: null },
+    where: { cardId, shoppingListId: null, isExpense: true },
     select: {
       owner: true,
       price: true,
